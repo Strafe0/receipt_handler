@@ -25,7 +25,7 @@ class MainActivity: FlutterActivity() {
 
         if (intent.action == Intent.ACTION_SEND) {
             println("INTENT TYPE: ${intent.type}")
-            if ("text/plain" == intent.type) {
+            if ("text/plain" == intent.type || "application/json" == intent.type) {
                 handleSendText(intent, Intent.EXTRA_TEXT)
             }
             if ("text/html" == intent.type) {
@@ -58,6 +58,8 @@ class MainActivity: FlutterActivity() {
         // sharedText = intent.getExtras().toString()
         // sharedText = intent.getBundleExtra(Intent.EXTRA_STREAM).toString()
         
+        // var extras = intent.getExtras().toString()
+        // println("extras: ${extras}")
         var extra: String? = intent.getExtras()?.get(Intent.EXTRA_STREAM).toString()
         var contentUri: Uri = Uri.parse(extra)
         var file: File = File(contentUri.getPath())
