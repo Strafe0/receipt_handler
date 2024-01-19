@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'receipt_fns.dart';
+part of 'receipt_ofd_ru.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,40 +14,41 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-ReceiptFns _$ReceiptFnsFromJson(Map<String, dynamic> json) {
-  return _ReceiptFns.fromJson(json);
+ReceiptOfdRu _$ReceiptOfdRuFromJson(Map<String, dynamic> json) {
+  return _ReceiptOfdRu.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ReceiptFns {
+mixin _$ReceiptOfdRu {
+  @JsonKey(name: "Calculation_Place")
   String get retailPlace => throw _privateConstructorUsedError;
-  @JsonKey(fromJson: moneyFromJson)
+  @JsonKey(name: "Amount_Total", fromJson: moneyFromJson)
   double get totalSum => throw _privateConstructorUsedError;
-  @JsonKey(name: "items")
-  List<ProductFns> get products => throw _privateConstructorUsedError;
+  @JsonKey(name: "Items")
+  List<ProductOfdRu> get products => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ReceiptFnsCopyWith<ReceiptFns> get copyWith =>
+  $ReceiptOfdRuCopyWith<ReceiptOfdRu> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ReceiptFnsCopyWith<$Res> {
-  factory $ReceiptFnsCopyWith(
-          ReceiptFns value, $Res Function(ReceiptFns) then) =
-      _$ReceiptFnsCopyWithImpl<$Res, ReceiptFns>;
+abstract class $ReceiptOfdRuCopyWith<$Res> {
+  factory $ReceiptOfdRuCopyWith(
+          ReceiptOfdRu value, $Res Function(ReceiptOfdRu) then) =
+      _$ReceiptOfdRuCopyWithImpl<$Res, ReceiptOfdRu>;
   @useResult
   $Res call(
-      {String retailPlace,
-      @JsonKey(fromJson: moneyFromJson) double totalSum,
-      @JsonKey(name: "items") List<ProductFns> products});
+      {@JsonKey(name: "Calculation_Place") String retailPlace,
+      @JsonKey(name: "Amount_Total", fromJson: moneyFromJson) double totalSum,
+      @JsonKey(name: "Items") List<ProductOfdRu> products});
 }
 
 /// @nodoc
-class _$ReceiptFnsCopyWithImpl<$Res, $Val extends ReceiptFns>
-    implements $ReceiptFnsCopyWith<$Res> {
-  _$ReceiptFnsCopyWithImpl(this._value, this._then);
+class _$ReceiptOfdRuCopyWithImpl<$Res, $Val extends ReceiptOfdRu>
+    implements $ReceiptOfdRuCopyWith<$Res> {
+  _$ReceiptOfdRuCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -73,31 +74,31 @@ class _$ReceiptFnsCopyWithImpl<$Res, $Val extends ReceiptFns>
       products: null == products
           ? _value.products
           : products // ignore: cast_nullable_to_non_nullable
-              as List<ProductFns>,
+              as List<ProductOfdRu>,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$ReceiptFnsImplCopyWith<$Res>
-    implements $ReceiptFnsCopyWith<$Res> {
-  factory _$$ReceiptFnsImplCopyWith(
-          _$ReceiptFnsImpl value, $Res Function(_$ReceiptFnsImpl) then) =
-      __$$ReceiptFnsImplCopyWithImpl<$Res>;
+abstract class _$$ReceiptOfdRuImplCopyWith<$Res>
+    implements $ReceiptOfdRuCopyWith<$Res> {
+  factory _$$ReceiptOfdRuImplCopyWith(
+          _$ReceiptOfdRuImpl value, $Res Function(_$ReceiptOfdRuImpl) then) =
+      __$$ReceiptOfdRuImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {String retailPlace,
-      @JsonKey(fromJson: moneyFromJson) double totalSum,
-      @JsonKey(name: "items") List<ProductFns> products});
+      {@JsonKey(name: "Calculation_Place") String retailPlace,
+      @JsonKey(name: "Amount_Total", fromJson: moneyFromJson) double totalSum,
+      @JsonKey(name: "Items") List<ProductOfdRu> products});
 }
 
 /// @nodoc
-class __$$ReceiptFnsImplCopyWithImpl<$Res>
-    extends _$ReceiptFnsCopyWithImpl<$Res, _$ReceiptFnsImpl>
-    implements _$$ReceiptFnsImplCopyWith<$Res> {
-  __$$ReceiptFnsImplCopyWithImpl(
-      _$ReceiptFnsImpl _value, $Res Function(_$ReceiptFnsImpl) _then)
+class __$$ReceiptOfdRuImplCopyWithImpl<$Res>
+    extends _$ReceiptOfdRuCopyWithImpl<$Res, _$ReceiptOfdRuImpl>
+    implements _$$ReceiptOfdRuImplCopyWith<$Res> {
+  __$$ReceiptOfdRuImplCopyWithImpl(
+      _$ReceiptOfdRuImpl _value, $Res Function(_$ReceiptOfdRuImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -107,7 +108,7 @@ class __$$ReceiptFnsImplCopyWithImpl<$Res>
     Object? totalSum = null,
     Object? products = null,
   }) {
-    return _then(_$ReceiptFnsImpl(
+    return _then(_$ReceiptOfdRuImpl(
       retailPlace: null == retailPlace
           ? _value.retailPlace
           : retailPlace // ignore: cast_nullable_to_non_nullable
@@ -119,7 +120,7 @@ class __$$ReceiptFnsImplCopyWithImpl<$Res>
       products: null == products
           ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
-              as List<ProductFns>,
+              as List<ProductOfdRu>,
     ));
   }
 }
@@ -127,25 +128,27 @@ class __$$ReceiptFnsImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$ReceiptFnsImpl implements _ReceiptFns {
-  const _$ReceiptFnsImpl(
-      {required this.retailPlace,
-      @JsonKey(fromJson: moneyFromJson) required this.totalSum,
-      @JsonKey(name: "items") required final List<ProductFns> products})
+class _$ReceiptOfdRuImpl implements _ReceiptOfdRu {
+  const _$ReceiptOfdRuImpl(
+      {@JsonKey(name: "Calculation_Place") required this.retailPlace,
+      @JsonKey(name: "Amount_Total", fromJson: moneyFromJson)
+      required this.totalSum,
+      @JsonKey(name: "Items") required final List<ProductOfdRu> products})
       : _products = products;
 
-  factory _$ReceiptFnsImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ReceiptFnsImplFromJson(json);
+  factory _$ReceiptOfdRuImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ReceiptOfdRuImplFromJson(json);
 
   @override
+  @JsonKey(name: "Calculation_Place")
   final String retailPlace;
   @override
-  @JsonKey(fromJson: moneyFromJson)
+  @JsonKey(name: "Amount_Total", fromJson: moneyFromJson)
   final double totalSum;
-  final List<ProductFns> _products;
+  final List<ProductOfdRu> _products;
   @override
-  @JsonKey(name: "items")
-  List<ProductFns> get products {
+  @JsonKey(name: "Items")
+  List<ProductOfdRu> get products {
     if (_products is EqualUnmodifiableListView) return _products;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_products);
@@ -153,14 +156,14 @@ class _$ReceiptFnsImpl implements _ReceiptFns {
 
   @override
   String toString() {
-    return 'ReceiptFns(retailPlace: $retailPlace, totalSum: $totalSum, products: $products)';
+    return 'ReceiptOfdRu(retailPlace: $retailPlace, totalSum: $totalSum, products: $products)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ReceiptFnsImpl &&
+            other is _$ReceiptOfdRuImpl &&
             (identical(other.retailPlace, retailPlace) ||
                 other.retailPlace == retailPlace) &&
             (identical(other.totalSum, totalSum) ||
@@ -176,37 +179,39 @@ class _$ReceiptFnsImpl implements _ReceiptFns {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ReceiptFnsImplCopyWith<_$ReceiptFnsImpl> get copyWith =>
-      __$$ReceiptFnsImplCopyWithImpl<_$ReceiptFnsImpl>(this, _$identity);
+  _$$ReceiptOfdRuImplCopyWith<_$ReceiptOfdRuImpl> get copyWith =>
+      __$$ReceiptOfdRuImplCopyWithImpl<_$ReceiptOfdRuImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ReceiptFnsImplToJson(
+    return _$$ReceiptOfdRuImplToJson(
       this,
     );
   }
 }
 
-abstract class _ReceiptFns implements ReceiptFns {
-  const factory _ReceiptFns(
-          {required final String retailPlace,
-          @JsonKey(fromJson: moneyFromJson) required final double totalSum,
-          @JsonKey(name: "items") required final List<ProductFns> products}) =
-      _$ReceiptFnsImpl;
+abstract class _ReceiptOfdRu implements ReceiptOfdRu {
+  const factory _ReceiptOfdRu(
+      {@JsonKey(name: "Calculation_Place") required final String retailPlace,
+      @JsonKey(name: "Amount_Total", fromJson: moneyFromJson)
+      required final double totalSum,
+      @JsonKey(name: "Items")
+      required final List<ProductOfdRu> products}) = _$ReceiptOfdRuImpl;
 
-  factory _ReceiptFns.fromJson(Map<String, dynamic> json) =
-      _$ReceiptFnsImpl.fromJson;
+  factory _ReceiptOfdRu.fromJson(Map<String, dynamic> json) =
+      _$ReceiptOfdRuImpl.fromJson;
 
   @override
+  @JsonKey(name: "Calculation_Place")
   String get retailPlace;
   @override
-  @JsonKey(fromJson: moneyFromJson)
+  @JsonKey(name: "Amount_Total", fromJson: moneyFromJson)
   double get totalSum;
   @override
-  @JsonKey(name: "items")
-  List<ProductFns> get products;
+  @JsonKey(name: "Items")
+  List<ProductOfdRu> get products;
   @override
   @JsonKey(ignore: true)
-  _$$ReceiptFnsImplCopyWith<_$ReceiptFnsImpl> get copyWith =>
+  _$$ReceiptOfdRuImplCopyWith<_$ReceiptOfdRuImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -6,16 +6,16 @@ import 'package:receipt_handler/data/repository/repository.dart';
 
 class ReceiptCubit extends Cubit<ReceiptState> {
   ReceiptCubit(this._repository) : super(ReceiptState()) {
-    getReceipt();
+    getReceiptFromSharedData();
   }
 
   final Repository _repository;
 
-  Future<void> getReceipt() async {
+  Future<void> getReceiptFromSharedData() async {
     emit(state.copyWith(status: ReceiptStatus.loading));
 
     try {
-      final IReceipt? receipt = await _repository.getReceipt();
+      final IReceipt? receipt = await _repository.getReceiptFromSharedData();
       if (receipt != null) {
         emit(state.copyWith(status: ReceiptStatus.success, receipt: receipt));
       } else {
@@ -25,7 +25,25 @@ class ReceiptCubit extends Cubit<ReceiptState> {
         ));
       }
     } catch (e) {
-      emit(state.copyWith(status: ReceiptStatus.failure));
+      emit(state.copyWith(status: ReceiptStatus.failure, receipt: EmptyReceipt()));
+    }
+  }
+
+  Future<void> getReceiptFromLink(String url) async {
+    emit(state.copyWith(status: ReceiptStatus.loading));
+
+    try {
+      final IReceipt? receipt = await _repository.getReceiptFromLink(url);
+      if (receipt != null) {
+        emit(state.copyWith(status: ReceiptStatus.success, receipt: receipt));
+      } else {
+        emit(state.copyWith(
+          status: ReceiptStatus.failure,
+          receipt: EmptyReceipt(),
+        ));
+      }
+    } catch (e) {
+      emit(state.copyWith(status: ReceiptStatus.failure, receipt: EmptyReceipt()));
     }
   }
 }

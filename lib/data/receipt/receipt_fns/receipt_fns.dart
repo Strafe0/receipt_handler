@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:receipt_handler/data/product/product_fns/product_fns.dart';
 import 'package:receipt_handler/data/receipt/receipt_interface.dart';
+import 'package:receipt_handler/utils/money_from_json.dart';
 
 part 'receipt_fns.freezed.dart';
 part 'receipt_fns.g.dart';
@@ -10,7 +11,7 @@ class ReceiptFns with _$ReceiptFns implements IReceipt {
   @JsonSerializable(explicitToJson: true)
   const factory ReceiptFns({
     required String retailPlace,
-    required double totalSum,
+    @JsonKey(fromJson: moneyFromJson) required double totalSum,
     @JsonKey(name: "items") required List<ProductFns> products,
   }) = _ReceiptFns;
 

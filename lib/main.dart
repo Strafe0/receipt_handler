@@ -54,8 +54,25 @@ class ReceiptHandlerAppView extends StatelessWidget {
           builder: (context, state) {
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: ListView(
-                children: prepareProducts(state.receipt.products),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    LinkTextField(),
+                    ...prepareProducts(state.receipt.products),
+                    Row(
+                      children: [
+                        const Expanded(child: Text('Итого')),
+                        Text(state.receipt.totalSum.toString()),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        const Expanded(child: Text('Торговая точка')),
+                        Text(state.receipt.retailPlace),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             );
           },
@@ -83,9 +100,9 @@ class ProductCard extends StatelessWidget {
           children: [
             ProductTile(title: product.name, subtitle: 'Продукт'),
             const Divider(),
-            ProductTile(title: product.quantity.toString(), subtitle: 'Количество'),
+            ProductTile(title: product.quantity.toString(), subtitle: 'Количество (шт/кг)'),
             const Divider(),
-            ProductTile(title: product.sum.toString(), subtitle: 'Стоимость'),
+            ProductTile(title: product.sum.toString(), subtitle: 'Стоимость (руб)'),
           ],
         ),
       ),
@@ -127,6 +144,52 @@ class ProductTile extends StatelessWidget {
           ],
         ),
         Text(subtitle),
+      ],
+    );
+  }
+}
+
+class LinkTextField extends StatelessWidget {
+  LinkTextField({super.key});
+
+  final TextEditingController _textController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        TextField(
+          autofocus: true,
+          cursorHeight: 24.0,
+          controller: _textController,
+          decoration: InputDecoration(
+            constraints: BoxConstraints(
+              maxWidth: MediaQuery.of(context).size.width * 0.8,
+            ),
+            border: const OutlineInputBorder(),
+            prefixIcon: IconButton(
+              icon: const Icon(Icons.paste),
+              onPressed: () async {
+                await Clipboard.getData(Clipboard.kTextPlain).then((value) {
+                  _textController.text = value?.text ?? '';
+                });
+              },
+            ),
+            suffixIcon: IconButton(
+              icon: const Icon(Icons.clear),
+              onPressed: () {
+                _textController.clear();
+              },
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 8.0, bottom: 4.0),
+          child: ElevatedButton(
+            onPressed: () => context.read<ReceiptCubit>().getReceiptFromLink(_textController.text),
+            child: const Text('Получить чек'),
+          ),
+        ),
       ],
     );
   }

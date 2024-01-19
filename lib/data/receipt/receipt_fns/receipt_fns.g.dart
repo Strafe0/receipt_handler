@@ -9,7 +9,7 @@ part of 'receipt_fns.dart';
 _$ReceiptFnsImpl _$$ReceiptFnsImplFromJson(Map<String, dynamic> json) =>
     _$ReceiptFnsImpl(
       retailPlace: json['retailPlace'] as String,
-      totalSum: (json['totalSum'] as num).toDouble(),
+      totalSum: moneyFromJson(json['totalSum']),
       products: (json['items'] as List<dynamic>)
           .map((e) => ProductFns.fromJson(e as Map<String, dynamic>))
           .toList(),

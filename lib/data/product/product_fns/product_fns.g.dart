@@ -9,9 +9,9 @@ part of 'product_fns.dart';
 _$ProductFnsImpl _$$ProductFnsImplFromJson(Map<String, dynamic> json) =>
     _$ProductFnsImpl(
       name: json['name'] as String,
-      price: (json['price'] as num).toDouble(),
+      price: moneyFromJson(json['price']),
       quantity: (json['quantity'] as num).toDouble(),
-      sum: (json['sum'] as num).toDouble(),
+      sum: moneyFromJson(json['sum']),
     );
 
 Map<String, dynamic> _$$ProductFnsImplToJson(_$ProductFnsImpl instance) =>
