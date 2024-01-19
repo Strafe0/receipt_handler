@@ -13,6 +13,7 @@ class ReceiptFns with _$ReceiptFns implements IReceipt {
     required String retailPlace,
     @JsonKey(fromJson: moneyFromJson) required double totalSum,
     @JsonKey(name: "items") required List<ProductFns> products,
+    required DateTime dateTime,
   }) = _ReceiptFns;
 
   factory ReceiptFns.fromJson(Map<String, dynamic> json) => _$ReceiptFnsFromJson(json);

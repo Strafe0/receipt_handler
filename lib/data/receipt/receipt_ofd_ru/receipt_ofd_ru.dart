@@ -13,6 +13,7 @@ class ReceiptOfdRu with _$ReceiptOfdRu implements IReceipt {
     @JsonKey(name: "Calculation_Place") required String retailPlace,
     @JsonKey(name: "Amount_Total", fromJson: moneyFromJson) required double totalSum,
     @JsonKey(name: "Items") required List<ProductOfdRu> products,
+    @JsonKey(name: "DateTime") required DateTime dateTime,
   }) = _ReceiptOfdRu;
 
   factory ReceiptOfdRu.fromJson(Map<String, dynamic> json) => _$ReceiptOfdRuFromJson(json);

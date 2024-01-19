@@ -13,6 +13,7 @@ _$ReceiptFnsImpl _$$ReceiptFnsImplFromJson(Map<String, dynamic> json) =>
       products: (json['items'] as List<dynamic>)
           .map((e) => ProductFns.fromJson(e as Map<String, dynamic>))
           .toList(),
+      dateTime: DateTime.parse(json['dateTime'] as String),
     );
 
 Map<String, dynamic> _$$ReceiptFnsImplToJson(_$ReceiptFnsImpl instance) =>
@@ -20,4 +21,5 @@ Map<String, dynamic> _$$ReceiptFnsImplToJson(_$ReceiptFnsImpl instance) =>
       'retailPlace': instance.retailPlace,
       'totalSum': instance.totalSum,
       'items': instance.products.map((e) => e.toJson()).toList(),
+      'dateTime': instance.dateTime.toIso8601String(),
     };

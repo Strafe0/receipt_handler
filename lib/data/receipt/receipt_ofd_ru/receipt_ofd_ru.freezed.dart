@@ -26,6 +26,8 @@ mixin _$ReceiptOfdRu {
   double get totalSum => throw _privateConstructorUsedError;
   @JsonKey(name: "Items")
   List<ProductOfdRu> get products => throw _privateConstructorUsedError;
+  @JsonKey(name: "DateTime")
+  DateTime get dateTime => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -42,7 +44,8 @@ abstract class $ReceiptOfdRuCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: "Calculation_Place") String retailPlace,
       @JsonKey(name: "Amount_Total", fromJson: moneyFromJson) double totalSum,
-      @JsonKey(name: "Items") List<ProductOfdRu> products});
+      @JsonKey(name: "Items") List<ProductOfdRu> products,
+      @JsonKey(name: "DateTime") DateTime dateTime});
 }
 
 /// @nodoc
@@ -61,6 +64,7 @@ class _$ReceiptOfdRuCopyWithImpl<$Res, $Val extends ReceiptOfdRu>
     Object? retailPlace = null,
     Object? totalSum = null,
     Object? products = null,
+    Object? dateTime = null,
   }) {
     return _then(_value.copyWith(
       retailPlace: null == retailPlace
@@ -75,6 +79,10 @@ class _$ReceiptOfdRuCopyWithImpl<$Res, $Val extends ReceiptOfdRu>
           ? _value.products
           : products // ignore: cast_nullable_to_non_nullable
               as List<ProductOfdRu>,
+      dateTime: null == dateTime
+          ? _value.dateTime
+          : dateTime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ) as $Val);
   }
 }
@@ -90,7 +98,8 @@ abstract class _$$ReceiptOfdRuImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: "Calculation_Place") String retailPlace,
       @JsonKey(name: "Amount_Total", fromJson: moneyFromJson) double totalSum,
-      @JsonKey(name: "Items") List<ProductOfdRu> products});
+      @JsonKey(name: "Items") List<ProductOfdRu> products,
+      @JsonKey(name: "DateTime") DateTime dateTime});
 }
 
 /// @nodoc
@@ -107,6 +116,7 @@ class __$$ReceiptOfdRuImplCopyWithImpl<$Res>
     Object? retailPlace = null,
     Object? totalSum = null,
     Object? products = null,
+    Object? dateTime = null,
   }) {
     return _then(_$ReceiptOfdRuImpl(
       retailPlace: null == retailPlace
@@ -121,6 +131,10 @@ class __$$ReceiptOfdRuImplCopyWithImpl<$Res>
           ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
               as List<ProductOfdRu>,
+      dateTime: null == dateTime
+          ? _value.dateTime
+          : dateTime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }
@@ -133,7 +147,8 @@ class _$ReceiptOfdRuImpl implements _ReceiptOfdRu {
       {@JsonKey(name: "Calculation_Place") required this.retailPlace,
       @JsonKey(name: "Amount_Total", fromJson: moneyFromJson)
       required this.totalSum,
-      @JsonKey(name: "Items") required final List<ProductOfdRu> products})
+      @JsonKey(name: "Items") required final List<ProductOfdRu> products,
+      @JsonKey(name: "DateTime") required this.dateTime})
       : _products = products;
 
   factory _$ReceiptOfdRuImpl.fromJson(Map<String, dynamic> json) =>
@@ -155,8 +170,12 @@ class _$ReceiptOfdRuImpl implements _ReceiptOfdRu {
   }
 
   @override
+  @JsonKey(name: "DateTime")
+  final DateTime dateTime;
+
+  @override
   String toString() {
-    return 'ReceiptOfdRu(retailPlace: $retailPlace, totalSum: $totalSum, products: $products)';
+    return 'ReceiptOfdRu(retailPlace: $retailPlace, totalSum: $totalSum, products: $products, dateTime: $dateTime)';
   }
 
   @override
@@ -168,13 +187,15 @@ class _$ReceiptOfdRuImpl implements _ReceiptOfdRu {
                 other.retailPlace == retailPlace) &&
             (identical(other.totalSum, totalSum) ||
                 other.totalSum == totalSum) &&
-            const DeepCollectionEquality().equals(other._products, _products));
+            const DeepCollectionEquality().equals(other._products, _products) &&
+            (identical(other.dateTime, dateTime) ||
+                other.dateTime == dateTime));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, retailPlace, totalSum,
-      const DeepCollectionEquality().hash(_products));
+      const DeepCollectionEquality().hash(_products), dateTime);
 
   @JsonKey(ignore: true)
   @override
@@ -195,8 +216,9 @@ abstract class _ReceiptOfdRu implements ReceiptOfdRu {
       {@JsonKey(name: "Calculation_Place") required final String retailPlace,
       @JsonKey(name: "Amount_Total", fromJson: moneyFromJson)
       required final double totalSum,
-      @JsonKey(name: "Items")
-      required final List<ProductOfdRu> products}) = _$ReceiptOfdRuImpl;
+      @JsonKey(name: "Items") required final List<ProductOfdRu> products,
+      @JsonKey(name: "DateTime")
+      required final DateTime dateTime}) = _$ReceiptOfdRuImpl;
 
   factory _ReceiptOfdRu.fromJson(Map<String, dynamic> json) =
       _$ReceiptOfdRuImpl.fromJson;
@@ -210,6 +232,9 @@ abstract class _ReceiptOfdRu implements ReceiptOfdRu {
   @override
   @JsonKey(name: "Items")
   List<ProductOfdRu> get products;
+  @override
+  @JsonKey(name: "DateTime")
+  DateTime get dateTime;
   @override
   @JsonKey(ignore: true)
   _$$ReceiptOfdRuImplCopyWith<_$ReceiptOfdRuImpl> get copyWith =>

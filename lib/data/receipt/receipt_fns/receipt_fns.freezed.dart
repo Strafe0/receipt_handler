@@ -25,6 +25,7 @@ mixin _$ReceiptFns {
   double get totalSum => throw _privateConstructorUsedError;
   @JsonKey(name: "items")
   List<ProductFns> get products => throw _privateConstructorUsedError;
+  DateTime get dateTime => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,7 +42,8 @@ abstract class $ReceiptFnsCopyWith<$Res> {
   $Res call(
       {String retailPlace,
       @JsonKey(fromJson: moneyFromJson) double totalSum,
-      @JsonKey(name: "items") List<ProductFns> products});
+      @JsonKey(name: "items") List<ProductFns> products,
+      DateTime dateTime});
 }
 
 /// @nodoc
@@ -60,6 +62,7 @@ class _$ReceiptFnsCopyWithImpl<$Res, $Val extends ReceiptFns>
     Object? retailPlace = null,
     Object? totalSum = null,
     Object? products = null,
+    Object? dateTime = null,
   }) {
     return _then(_value.copyWith(
       retailPlace: null == retailPlace
@@ -74,6 +77,10 @@ class _$ReceiptFnsCopyWithImpl<$Res, $Val extends ReceiptFns>
           ? _value.products
           : products // ignore: cast_nullable_to_non_nullable
               as List<ProductFns>,
+      dateTime: null == dateTime
+          ? _value.dateTime
+          : dateTime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ) as $Val);
   }
 }
@@ -89,7 +96,8 @@ abstract class _$$ReceiptFnsImplCopyWith<$Res>
   $Res call(
       {String retailPlace,
       @JsonKey(fromJson: moneyFromJson) double totalSum,
-      @JsonKey(name: "items") List<ProductFns> products});
+      @JsonKey(name: "items") List<ProductFns> products,
+      DateTime dateTime});
 }
 
 /// @nodoc
@@ -106,6 +114,7 @@ class __$$ReceiptFnsImplCopyWithImpl<$Res>
     Object? retailPlace = null,
     Object? totalSum = null,
     Object? products = null,
+    Object? dateTime = null,
   }) {
     return _then(_$ReceiptFnsImpl(
       retailPlace: null == retailPlace
@@ -120,6 +129,10 @@ class __$$ReceiptFnsImplCopyWithImpl<$Res>
           ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
               as List<ProductFns>,
+      dateTime: null == dateTime
+          ? _value.dateTime
+          : dateTime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }
@@ -131,7 +144,8 @@ class _$ReceiptFnsImpl implements _ReceiptFns {
   const _$ReceiptFnsImpl(
       {required this.retailPlace,
       @JsonKey(fromJson: moneyFromJson) required this.totalSum,
-      @JsonKey(name: "items") required final List<ProductFns> products})
+      @JsonKey(name: "items") required final List<ProductFns> products,
+      required this.dateTime})
       : _products = products;
 
   factory _$ReceiptFnsImpl.fromJson(Map<String, dynamic> json) =>
@@ -152,8 +166,11 @@ class _$ReceiptFnsImpl implements _ReceiptFns {
   }
 
   @override
+  final DateTime dateTime;
+
+  @override
   String toString() {
-    return 'ReceiptFns(retailPlace: $retailPlace, totalSum: $totalSum, products: $products)';
+    return 'ReceiptFns(retailPlace: $retailPlace, totalSum: $totalSum, products: $products, dateTime: $dateTime)';
   }
 
   @override
@@ -165,13 +182,15 @@ class _$ReceiptFnsImpl implements _ReceiptFns {
                 other.retailPlace == retailPlace) &&
             (identical(other.totalSum, totalSum) ||
                 other.totalSum == totalSum) &&
-            const DeepCollectionEquality().equals(other._products, _products));
+            const DeepCollectionEquality().equals(other._products, _products) &&
+            (identical(other.dateTime, dateTime) ||
+                other.dateTime == dateTime));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, retailPlace, totalSum,
-      const DeepCollectionEquality().hash(_products));
+      const DeepCollectionEquality().hash(_products), dateTime);
 
   @JsonKey(ignore: true)
   @override
@@ -189,10 +208,10 @@ class _$ReceiptFnsImpl implements _ReceiptFns {
 
 abstract class _ReceiptFns implements ReceiptFns {
   const factory _ReceiptFns(
-          {required final String retailPlace,
-          @JsonKey(fromJson: moneyFromJson) required final double totalSum,
-          @JsonKey(name: "items") required final List<ProductFns> products}) =
-      _$ReceiptFnsImpl;
+      {required final String retailPlace,
+      @JsonKey(fromJson: moneyFromJson) required final double totalSum,
+      @JsonKey(name: "items") required final List<ProductFns> products,
+      required final DateTime dateTime}) = _$ReceiptFnsImpl;
 
   factory _ReceiptFns.fromJson(Map<String, dynamic> json) =
       _$ReceiptFnsImpl.fromJson;
@@ -205,6 +224,8 @@ abstract class _ReceiptFns implements ReceiptFns {
   @override
   @JsonKey(name: "items")
   List<ProductFns> get products;
+  @override
+  DateTime get dateTime;
   @override
   @JsonKey(ignore: true)
   _$$ReceiptFnsImplCopyWith<_$ReceiptFnsImpl> get copyWith =>

@@ -13,6 +13,7 @@ _$ReceiptOfdRuImpl _$$ReceiptOfdRuImplFromJson(Map<String, dynamic> json) =>
       products: (json['Items'] as List<dynamic>)
           .map((e) => ProductOfdRu.fromJson(e as Map<String, dynamic>))
           .toList(),
+      dateTime: DateTime.parse(json['DateTime'] as String),
     );
 
 Map<String, dynamic> _$$ReceiptOfdRuImplToJson(_$ReceiptOfdRuImpl instance) =>
@@ -20,4 +21,5 @@ Map<String, dynamic> _$$ReceiptOfdRuImplToJson(_$ReceiptOfdRuImpl instance) =>
       'Calculation_Place': instance.retailPlace,
       'Amount_Total': instance.totalSum,
       'Items': instance.products.map((e) => e.toJson()).toList(),
+      'DateTime': instance.dateTime.toIso8601String(),
     };

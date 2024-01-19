@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:receipt_handler/bloc/bloc.dart';
 import 'package:receipt_handler/data/product/product_interface.dart';
+import 'package:receipt_handler/data/receipt/receipt_interface.dart';
 import 'package:receipt_handler/data/repository/repository.dart';
 import 'package:receipt_handler/theme/theme.dart';
 import 'package:flutter/services.dart';
+import 'package:receipt_handler/utils/date_time_utils.dart';
 
 import 'bloc/receipt_state.dart';
 
@@ -48,51 +50,40 @@ class ReceiptHandlerAppView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => ReceiptCubit(context.read<Repository>()),
-      child: Scaffold(
-        appBar: AppBar(title: const Text("Обработчик чеков")),
-        body: BlocBuilder<ReceiptCubit, ReceiptState>(
-          builder: (context, state) {
-            return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 14.0),
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    LinkTextField(),
-                    ...prepareProducts(state.receipt.products),
-                    const SizedBox(height: 12,),
-                    Row(
+      child: GestureDetector(
+        onTap: () {
+          FocusScopeNode currentFocus = FocusScope.of(context);
+
+          if (!currentFocus.hasPrimaryFocus &&
+              currentFocus.focusedChild != null) {
+            FocusManager.instance.primaryFocus!.unfocus();
+          }
+        },
+        child: Scaffold(
+          appBar: AppBar(title: const Text("Обработчик чеков")),
+          body: Container(
+            alignment: Alignment.topCenter,
+            child: BlocBuilder<ReceiptCubit, ReceiptState>(
+              builder: (context, state) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 14.0),
+                  child: SingleChildScrollView(
+                    child: Column(
                       children: [
-                        Expanded(
-                          child: Text(
-                            'Итого',
-                            style: Theme.of(context).textTheme.titleLarge,
-                          ),
-                        ),
-                        Text(
-                          '${state.receipt.totalSum.toString()} руб.',
-                          style: Theme.of(context).textTheme.titleLarge,
-                        ),
+                        LinkTextField(),
+                        ...prepareProducts(state.receipt.products),
+                        const SizedBox(height: 12,),
+                        if (state.receipt is! EmptyReceipt)
+                          ReceiptInfo(state: state),
+                        if (state.status == ReceiptStatus.loading)
+                          const CircularProgressIndicator(),
                       ],
                     ),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Text(
-                            'Торговая точка',
-                            style: Theme.of(context).textTheme.titleMedium,
-                          ),
-                        ),
-                        Text(
-                          state.receipt.retailPlace,
-                          style: Theme.of(context).textTheme.titleMedium,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            );
-          },
+                  ),
+                );
+              },
+            ),
+          ),
         ),
       ),
     );
@@ -175,6 +166,63 @@ class ProductTile extends StatelessWidget {
   }
 }
 
+class ReceiptInfo extends StatelessWidget {
+  const ReceiptInfo({super.key, required this.state});
+
+  final ReceiptState state;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(children: [
+      ReceiptInfoTile(
+        infoKey: 'Итого',
+        infoValue: '${state.receipt.totalSum.toString()} руб.',
+        textStyle: Theme.of(context).textTheme.titleLarge,
+      ),
+      ReceiptInfoTile(
+        infoKey: 'Торговая точка',
+        infoValue: state.receipt.retailPlace,
+        textStyle: Theme.of(context).textTheme.titleMedium,
+      ),
+      ReceiptInfoTile(
+        infoKey: 'Дата и время',
+        infoValue: dateFormat.format(state.receipt.dateTime),
+        textStyle: Theme.of(context).textTheme.titleMedium,
+      ),
+    ]);
+  }
+}
+
+class ReceiptInfoTile extends StatelessWidget {
+  const ReceiptInfoTile(
+      {super.key,
+      required this.infoKey,
+      required this.infoValue,
+      this.textStyle});
+
+  final String infoKey;
+  final String infoValue;
+  final TextStyle? textStyle;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          child: Text(
+            infoKey,
+            style: textStyle,
+          ),
+        ),
+        Text(
+          infoValue,
+          style: textStyle,
+        ),
+      ],
+    );
+  }
+}
+
 class LinkTextField extends StatelessWidget {
   LinkTextField({super.key});
 
@@ -185,7 +233,7 @@ class LinkTextField extends StatelessWidget {
     return Column(
       children: [
         TextField(
-          autofocus: true,
+          autofocus: false,
           cursorHeight: 24.0,
           controller: _textController,
           decoration: InputDecoration(
