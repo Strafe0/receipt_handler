@@ -8,7 +8,7 @@ part of 'receipt_ofd_ru.dart';
 
 _$ReceiptOfdRuImpl _$$ReceiptOfdRuImplFromJson(Map<String, dynamic> json) =>
     _$ReceiptOfdRuImpl(
-      retailPlace: json['Calculation_Place'] as String,
+      retailPlace: json['User'] as String,
       totalSum: moneyFromJson(json['Amount_Total']),
       products: (json['Items'] as List<dynamic>)
           .map((e) => ProductOfdRu.fromJson(e as Map<String, dynamic>))
@@ -18,7 +18,7 @@ _$ReceiptOfdRuImpl _$$ReceiptOfdRuImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$ReceiptOfdRuImplToJson(_$ReceiptOfdRuImpl instance) =>
     <String, dynamic>{
-      'Calculation_Place': instance.retailPlace,
+      'User': instance.retailPlace,
       'Amount_Total': instance.totalSum,
       'Items': instance.products.map((e) => e.toJson()).toList(),
       'DateTime': instance.dateTime.toIso8601String(),

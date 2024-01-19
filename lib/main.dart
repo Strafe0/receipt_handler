@@ -179,16 +179,19 @@ class ReceiptInfo extends StatelessWidget {
         infoValue: '${state.receipt.totalSum.toString()} руб.',
         textStyle: Theme.of(context).textTheme.titleLarge,
       ),
+      const Divider(),
       ReceiptInfoTile(
         infoKey: 'Торговая точка',
         infoValue: state.receipt.retailPlace,
         textStyle: Theme.of(context).textTheme.titleMedium,
       ),
+      const Divider(),
       ReceiptInfoTile(
         infoKey: 'Дата и время',
         infoValue: dateFormat.format(state.receipt.dateTime),
         textStyle: Theme.of(context).textTheme.titleMedium,
       ),
+      const SizedBox(height: 12,)
     ]);
   }
 }
@@ -214,9 +217,12 @@ class ReceiptInfoTile extends StatelessWidget {
             style: textStyle,
           ),
         ),
-        Text(
-          infoValue,
-          style: textStyle,
+        Expanded(
+          child: Text(
+            infoValue,
+            textAlign: TextAlign.end,
+            style: textStyle,
+          ),
         ),
       ],
     );

@@ -10,7 +10,7 @@ part 'receipt_ofd_ru.g.dart';
 class ReceiptOfdRu with _$ReceiptOfdRu implements IReceipt {
   @JsonSerializable(explicitToJson: true)
   const factory ReceiptOfdRu({
-    @JsonKey(name: "Calculation_Place") required String retailPlace,
+    @JsonKey(name: "User") required String retailPlace,
     @JsonKey(name: "Amount_Total", fromJson: moneyFromJson) required double totalSum,
     @JsonKey(name: "Items") required List<ProductOfdRu> products,
     @JsonKey(name: "DateTime") required DateTime dateTime,
