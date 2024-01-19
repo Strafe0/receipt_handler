@@ -53,22 +53,39 @@ class ReceiptHandlerAppView extends StatelessWidget {
         body: BlocBuilder<ReceiptCubit, ReceiptState>(
           builder: (context, state) {
             return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              padding: const EdgeInsets.symmetric(horizontal: 14.0),
               child: SingleChildScrollView(
                 child: Column(
                   children: [
                     LinkTextField(),
                     ...prepareProducts(state.receipt.products),
+                    const SizedBox(height: 12,),
                     Row(
                       children: [
-                        const Expanded(child: Text('Итого')),
-                        Text(state.receipt.totalSum.toString()),
+                        Expanded(
+                          child: Text(
+                            'Итого',
+                            style: Theme.of(context).textTheme.titleLarge,
+                          ),
+                        ),
+                        Text(
+                          '${state.receipt.totalSum.toString()} руб.',
+                          style: Theme.of(context).textTheme.titleLarge,
+                        ),
                       ],
                     ),
                     Row(
                       children: [
-                        const Expanded(child: Text('Торговая точка')),
-                        Text(state.receipt.retailPlace),
+                        Expanded(
+                          child: Text(
+                            'Торговая точка',
+                            style: Theme.of(context).textTheme.titleMedium,
+                          ),
+                        ),
+                        Text(
+                          state.receipt.retailPlace,
+                          style: Theme.of(context).textTheme.titleMedium,
+                        ),
                       ],
                     ),
                   ],
@@ -93,17 +110,21 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(24),
-        child: Column(
-          children: [
-            ProductTile(title: product.name, subtitle: 'Продукт'),
-            const Divider(),
-            ProductTile(title: product.quantity.toString(), subtitle: 'Количество (шт/кг)'),
-            const Divider(),
-            ProductTile(title: product.sum.toString(), subtitle: 'Стоимость (руб)'),
-          ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Card(
+        margin: EdgeInsets.zero,
+        child: Padding(
+          padding: const EdgeInsets.all(18),
+          child: Column(
+            children: [
+              ProductTile(title: product.name, subtitle: 'Продукт'),
+              const Divider(),
+              ProductTile(title: product.quantity.toString(), subtitle: 'Количество (шт/кг)'),
+              const Divider(),
+              ProductTile(title: product.sum.toString(), subtitle: 'Стоимость (руб)'),
+            ],
+          ),
         ),
       ),
     );
@@ -123,7 +144,12 @@ class ProductTile extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Expanded(child: Text(title)),
+            Expanded(
+              child: Text(
+                title,
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
+            ),
             IconButton(
               onPressed: () async {
                 Clipboard.setData(ClipboardData(text: title));
@@ -143,7 +169,7 @@ class ProductTile extends StatelessWidget {
             ),
           ],
         ),
-        Text(subtitle),
+        Text(subtitle, style: Theme.of(context).textTheme.labelMedium,),
       ],
     );
   }
