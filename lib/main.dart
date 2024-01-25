@@ -109,7 +109,7 @@ class ProductCard extends StatelessWidget {
           padding: const EdgeInsets.all(18),
           child: Column(
             children: [
-              ProductTile(title: product.name, subtitle: 'Продукт'),
+              ProductTile(title: "${product.name} (*${product.quantity})", subtitle: 'Продукт'),
               const Divider(),
               ProductTile(title: product.quantity.toString(), subtitle: 'Количество (шт/кг)'),
               const Divider(),
