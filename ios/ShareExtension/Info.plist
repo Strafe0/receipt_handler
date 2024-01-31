@@ -7,26 +7,7 @@
 		<key>NSExtensionAttributes</key>
 		<dict>
 			<key>NSExtensionActivationRule</key>
-			<!-- <string>TRUEPREDICATE</string> -->
-			<string>SUBQUERY (
-                extensionItems,
-                $extensionItem,
-                SUBQUERY (
-                    $extensionItem.attachments,
-                    $attachment,
-                    (
-                        ANY $attachment.registeredTypeIdentifiers UTI-CONFORMS-TO "public.file-url"
-                        || ANY $attachment.registeredTypeIdentifiers UTI-CONFORMS-TO "public.text"
-                        || ANY $attachment.registeredTypeIdentifiers UTI-CONFORMS-TO "public.url"
-                    )
-                ).@count > 0
-            ).@count > 0
-			</string>
-			<key>PHSupportedMediaTypes</key>
-			<array>
-				<string>Video</string>
-				<string>Image</string>
-			</array>
+			<string>TRUEPREDICATE</string>
 		</dict>
 		<key>NSExtensionMainStoryboard</key>
 		<string>MainInterface</string>

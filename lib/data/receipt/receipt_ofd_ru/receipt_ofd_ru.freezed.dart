@@ -20,7 +20,7 @@ ReceiptOfdRu _$ReceiptOfdRuFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ReceiptOfdRu {
-  @JsonKey(name: "User")
+  @JsonKey(readValue: ofdRuRetailPlaceReadValue)
   String get retailPlace => throw _privateConstructorUsedError;
   @JsonKey(name: "Amount_Total", fromJson: moneyFromJson)
   double get totalSum => throw _privateConstructorUsedError;
@@ -42,7 +42,7 @@ abstract class $ReceiptOfdRuCopyWith<$Res> {
       _$ReceiptOfdRuCopyWithImpl<$Res, ReceiptOfdRu>;
   @useResult
   $Res call(
-      {@JsonKey(name: "User") String retailPlace,
+      {@JsonKey(readValue: ofdRuRetailPlaceReadValue) String retailPlace,
       @JsonKey(name: "Amount_Total", fromJson: moneyFromJson) double totalSum,
       @JsonKey(name: "Items") List<ProductOfdRu> products,
       @JsonKey(name: "DateTime") DateTime dateTime});
@@ -96,7 +96,7 @@ abstract class _$$ReceiptOfdRuImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "User") String retailPlace,
+      {@JsonKey(readValue: ofdRuRetailPlaceReadValue) String retailPlace,
       @JsonKey(name: "Amount_Total", fromJson: moneyFromJson) double totalSum,
       @JsonKey(name: "Items") List<ProductOfdRu> products,
       @JsonKey(name: "DateTime") DateTime dateTime});
@@ -144,7 +144,7 @@ class __$$ReceiptOfdRuImplCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 class _$ReceiptOfdRuImpl implements _ReceiptOfdRu {
   const _$ReceiptOfdRuImpl(
-      {@JsonKey(name: "User") required this.retailPlace,
+      {@JsonKey(readValue: ofdRuRetailPlaceReadValue) required this.retailPlace,
       @JsonKey(name: "Amount_Total", fromJson: moneyFromJson)
       required this.totalSum,
       @JsonKey(name: "Items") required final List<ProductOfdRu> products,
@@ -155,7 +155,7 @@ class _$ReceiptOfdRuImpl implements _ReceiptOfdRu {
       _$$ReceiptOfdRuImplFromJson(json);
 
   @override
-  @JsonKey(name: "User")
+  @JsonKey(readValue: ofdRuRetailPlaceReadValue)
   final String retailPlace;
   @override
   @JsonKey(name: "Amount_Total", fromJson: moneyFromJson)
@@ -213,7 +213,8 @@ class _$ReceiptOfdRuImpl implements _ReceiptOfdRu {
 
 abstract class _ReceiptOfdRu implements ReceiptOfdRu {
   const factory _ReceiptOfdRu(
-          {@JsonKey(name: "User") required final String retailPlace,
+          {@JsonKey(readValue: ofdRuRetailPlaceReadValue)
+          required final String retailPlace,
           @JsonKey(name: "Amount_Total", fromJson: moneyFromJson)
           required final double totalSum,
           @JsonKey(name: "Items") required final List<ProductOfdRu> products,
@@ -224,7 +225,7 @@ abstract class _ReceiptOfdRu implements ReceiptOfdRu {
       _$ReceiptOfdRuImpl.fromJson;
 
   @override
-  @JsonKey(name: "User")
+  @JsonKey(readValue: ofdRuRetailPlaceReadValue)
   String get retailPlace;
   @override
   @JsonKey(name: "Amount_Total", fromJson: moneyFromJson)

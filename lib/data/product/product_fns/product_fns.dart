@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
 import 'package:receipt_handler/data/product/product_interface.dart';
-import 'package:receipt_handler/utils/money_from_json.dart';
+import 'package:receipt_handler/utils/from_json_functions.dart';
 
 part 'product_fns.freezed.dart';
 part 'product_fns.g.dart';
