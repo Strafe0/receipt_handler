@@ -205,14 +205,14 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class ErrorMessage extends StatelessWidget {
-  const ErrorMessage({Key? key}) : super(key: key);
+  const ErrorMessage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Text(
         'Не могу найти чек по данной ссылке...',
-        style: Theme.of(context).textTheme.bodyText1?.copyWith(color: Colors.red),
+        style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Colors.red),
       ),
     );
   }
@@ -220,7 +220,7 @@ class ErrorMessage extends StatelessWidget {
 
 
 class ProductList extends StatelessWidget {
-  const ProductList(this.products, {Key? key}) : super(key: key);
+  const ProductList(this.products, {super.key});
 
   final List<Widget> products;
 
@@ -238,7 +238,7 @@ class ProductListTile extends StatefulWidget {
   const ProductListTile({
     required this.attribute,
     required this.value,
-    Key? key}) : super(key: key);
+    super.key});
 
   final String attribute;
   final dynamic value;
@@ -269,9 +269,9 @@ class _ProductListTileState extends State<ProductListTile> {
 
   Future<void> copyToClipboardWithSnackBar(BuildContext ctx, String text) async {
     return await Clipboard.setData(ClipboardData(text: text)).then((_) {
-      ScaffoldMessenger.of(ctx).showSnackBar(SnackBar(
+      ScaffoldMessenger.of(ctx).showSnackBar(const SnackBar(
         content: Row(
-          children: const [
+          children: [
             Text('Скопировано'),
             SizedBox(width: 20),
           ],
