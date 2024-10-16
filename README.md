@@ -7,7 +7,7 @@ An app processing receipts from OFD.RU and json.
 
 Пример ссылки с OFD.RU: https://check.ofd.ru/rec/2465008567/0005933902036371/9960440302232776/15871/678237072.
 
-Посмотреть работу приложения: [GitHub Pages](https://strafe0.github.io/receipt_handler/) или [APK](https://github.com/Strafe0/receipt_handler/releases/download/v1.0.0/app-release.apk).
+Посмотреть работу приложения: [GitHub Pages](https://strafe0.github.io/receipt_handler/), [Telegram Web App](https://t.me/ReceiptHandlerBot) или [APK](https://github.com/Strafe0/receipt_handler/releases/download/v1.0.0/app-release.apk).
 
 <table>
   <tr>
